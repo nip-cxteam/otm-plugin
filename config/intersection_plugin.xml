@@ -3,7 +3,7 @@
 <scenario>
 
   <plugins>
-    <plugin name="sig_pretimed_plugin" class="controller.ControllerSignalPretimedPlugin" folder=".../target/otm-plugin-1.0-SNAPSHOT.jar"/>
+    <plugin name="sig_pretimed_plugin" class="controller.ControllerSignalPretimedPlugin" folder="<your otm-plugin-1.0-SNAPSHOT.jar>"/>
   </plugins>
 
   <commodities>
