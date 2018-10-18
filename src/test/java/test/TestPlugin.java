@@ -13,13 +13,13 @@ public class TestPlugin {
     String out_request_file = "config/output_request.xml";
     String output_folder = "output/";
     float start_time = 0f;
-    float duration = 1000f;
+    float duration = 3600f;
     float sim_dt = 1f;
 
     @Test
     public void run_plugin(){
         try {
-            API api = OTM.load("config/intersection_plugin.xml",sim_dt,true,"ctm");
+            API api = OTM.load("config/line_controller.xml",sim_dt,true,"ctm");
             api.run("plugin", out_request_file,output_folder,start_time,duration);
         } catch (OTMException e) {
             System.out.print(e);
