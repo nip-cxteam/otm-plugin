@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario>
+
+	<commodities>
+		<commodity id="1" name="c1" pathfull="false"/>
+	</commodities>
+
+	<demands>
+		<demand link_id="1" commodity_id="1" dt="1000">10</demand>
+	</demands>
+
+	<network>
+		<nodes>
+			<node id="1" x="0" y="0"/>
+			<node id="2" x="1000" y="0"/>
+			<node id="3" x="2000" y="0"/>
+			<node id="4" x="3000" y="0"/>
+			<node id="5" x="4000" y="0"/>
+			<node id="6" x="5000" y="0"/>
+			<node id="7" x="6000" y="0"/>
+			<node id="8" x="7000" y="0"/>
+		</nodes>
+		<links>
+			<link id="1" length="1000" start_node_id="1" end_node_id="2" roadparam="1" full_lanes="1"/>
+			<link id="2" length="1000" start_node_id="2" end_node_id="3" roadparam="1" full_lanes="1"/>
+			<link id="3" length="1000" start_node_id="3" end_node_id="4" roadparam="1" full_lanes="1"/>
+			<link id="4" length="1000" start_node_id="4" end_node_id="5" roadparam="1" full_lanes="1"/>
+			<link id="5" length="1000" start_node_id="5" end_node_id="6" roadparam="1" full_lanes="1"/>
+			<link id="6" length="1000" start_node_id="6" end_node_id="7" roadparam="1" full_lanes="1"/>
+			<link id="7" length="1000" start_node_id="7" end_node_id="8" roadparam="1" full_lanes="1"/>
+		</links>
+		<roadparams>
+			<roadparam id="1" capacity="2000" speed="100" jam_density="100"/>
+		</roadparams>
+	</network>
+
+	<actuators>
+		<actuator id="1" type="fd" dt="30">
+			<actuator_target type="link" id="3"/>
+		</actuator>
+		<actuator id="2" type="ramp_meter" dt="30">
+			<actuator_target type="link" id="6"/>
+		</actuator>
+	</actuators>
+
+	<sensors>
+		<sensor id="1" type="fixed" link_id="2" dt="100"/>
+		<sensor id="2" type="fixed" link_id="6" dt="100"/>
+	</sensors>
+
+	<plugins>
+		<plugin name="myplugin" folder="otm-plugin/target/otm-plugin-1.0-SNAPSHOT.jar" class="controller.PedestrianControlPlugin"/>
+	</plugins>
+
+	<controllers>
+		<controller id="0" type="myplugin" dt="100">
+			<target_actuators>
+				<target_actuator id="1" usage="first_actuator"/>
+				<target_actuator id="2" usage="second_actuator"/>
+			</target_actuators>
+			<feedback_sensors>
+				<feedback_sensor id="1" usage="first_sensor"/>
+				<feedback_sensor id="2" usage="second_sensor"/>
+			</feedback_sensors>
+		</controller>
+	</controllers>
+
+</scenario>
