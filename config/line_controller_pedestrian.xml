@@ -6,7 +6,7 @@
 	</commodities>
 
 	<demands>
-		<demand link_id="1" commodity_id="1" dt="1000">10</demand>
+		<demand link_id="1" commodity_id="1" dt="1000">2000</demand>
 	</demands>
 
 	<network>
@@ -38,14 +38,14 @@
 		<actuator id="1" type="fd" dt="30">
 			<actuator_target type="link" id="3"/>
 		</actuator>
-		<actuator id="2" type="ramp_meter" dt="30">
+		<actuator id="2" type="fd" dt="30">
 			<actuator_target type="link" id="6"/>
 		</actuator>
 	</actuators>
 
 	<sensors>
-		<sensor id="1" type="fixed" link_id="2" dt="100"/>
-		<sensor id="2" type="fixed" link_id="6" dt="100"/>
+		<sensor id="1" type="fixed" link_id="2" dt="30"/>
+		<sensor id="2" type="fixed" link_id="6" dt="30"/>
 	</sensors>
 
 	<plugins>
@@ -53,7 +53,7 @@
 	</plugins>
 
 	<controllers>
-		<controller id="0" type="myplugin" dt="100">
+		<controller id="0" type="myplugin" dt="30">
 			<target_actuators>
 				<target_actuator id="1" usage="first_actuator"/>
 				<target_actuator id="2" usage="second_actuator"/>
