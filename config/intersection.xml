@@ -2,6 +2,12 @@
 
 <scenario>
 
+  <models>
+    <model type="ctm" name="myctm" is_default="true">
+      <model_params sim_dt="2" max_cell_length="100"/>
+    </model>
+  </models>
+
   <commodities>
     <commodity id="1" name="global" pathfull="false"/>
   </commodities>
@@ -73,7 +79,7 @@
 
     <roadgeoms>
       <roadgeom id="1">
-        <add_lanes lanes="1" side="l" start_pos="-300"/>
+        <add_lanes lanes="1" length="300" pos="dn" side="in"/>
       </roadgeom>
     </roadgeoms>
 

@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <scenario>
 
+	<models>
+		<model type="ctm" name="myctm" is_default="true">
+			<model_params sim_dt="2" max_cell_length="100"/>
+		</model>
+	</models>
+
 	<commodities>
 		<commodity id="1" name="c1" pathfull="false"/>
 	</commodities>
