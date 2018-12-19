@@ -12,7 +12,7 @@
 	</commodities>
 
 	<demands>
-		<demand link_id="1" commodity_id="1" dt="1000">2000</demand>
+		<demand link_id="1" commodity_id="1" dt="500">100000</demand>
 	</demands>
 
 	<network>
@@ -50,16 +50,16 @@
 	</actuators>
 
 	<sensors>
-		<sensor id="1" type="fixed" link_id="2" dt="30"/>
-		<sensor id="2" type="fixed" link_id="6" dt="30"/>
+		<sensor id="1" type="fixed" link_id="2" dt="50"/>
+		<sensor id="2" type="fixed" link_id="6" dt="50"/>
 	</sensors>
 
 	<plugins>
-		<plugin name="myplugin" folder="otm-plugin/target/otm-plugin-1.0-SNAPSHOT.jar" class="controller.PedestrianControlPlugin"/>
+		<plugin name="myplugin" folder="target/otm-plugin-1.0-SNAPSHOT.jar" class="controller.PedestrianControlPlugin"/>
 	</plugins>
 
 	<controllers>
-		<controller id="0" type="myplugin" dt="30">
+		<controller id="0" type="myplugin" dt="50">
 			<target_actuators>
 				<target_actuator id="1" usage="first_actuator"/>
 				<target_actuator id="2" usage="second_actuator"/>

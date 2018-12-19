@@ -16,7 +16,7 @@ import sensor.FixedSensor;
 public class PedestrianControlPlugin extends AbstractController {
 
     long first_act_id;
-    int number_pedestrians = 0;
+    float number_pedestrians = 0;
     FixedSensor first_sensor;
 
     public PedestrianControlPlugin(Scenario scenario, Controller jaxb_controller) throws OTMException {
@@ -27,12 +27,6 @@ public class PedestrianControlPlugin extends AbstractController {
 
     @Override
     public void initialize(Scenario scenario, float v)  {
-        for (AbstractActuator x : actuator_by_usage.values()){
-            ActuatorFD y = (ActuatorFD) x;
-            System.out.println(y);
-        }
-        // this.command.put(first_act_id,ActuatorFD.Color.green);
-        // this.command.put(second_act_id,ActuatorFD.Color.green);
     }
 
     @Override
@@ -40,12 +34,13 @@ public class PedestrianControlPlugin extends AbstractController {
 
         // keep adding pedestrians here
         this.number_pedestrians += getPoisson(3);
-        // System.out.println("time\tnum_ped\tnum_veh");
-        System.out.println(String.format("%f\t%d\t%f\t%f", 
+        if (timestamp==0)
+            System.out.println("time\tnum_veh\tflow");
+        System.out.println(String.format("%.0f\t%.2f\t%.2f", 
                         timestamp,
-                        number_pedestrians, 
+                        // number_pedestrians, 
                         first_sensor.get_vehicles(),
-                        first_sensor.get_flow_vph()
+                        first_sensor.get_flow_vph()//3600*dt
                         ));
 
         ActuatorFD y = (ActuatorFD) actuator_by_usage.get("first_actuator");
@@ -55,10 +50,12 @@ public class PedestrianControlPlugin extends AbstractController {
         // ActuatorFD.FDCommand z = y.new FDCommand(100f, 1000f, (vehicles>new_jam_density) ? vehicles : new_jam_density); //Set new FD to "half" of previous
         // System.out.println((vehicles>new_jam_density) ? vehicles : new_jam_density);
 
-        ActuatorFD.FDCommand z = y.new FDCommand(100f, 2000f, 100f); //Set new FD to "half" of previous
+        ActuatorFD.FDCommand z = y.new FDCommand(50f, 1000f, 100f); //Set new FD to "half" of previous
 
-        if(timestamp==540f)
+        if(timestamp==1200f){
             command.put(first_act_id, z);
+            System.out.println("=============================");
+        }
         // if(timestamp>2400d)
         //     command.put(first_act_id,ActuatorFD.Color.green);
 
